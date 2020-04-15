@@ -7,17 +7,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: WebView(
-        onWebViewCreated: (controller) {
-          _webViewController = controller;
-        },
-        initialUrl: _url,
-        javascriptMode: JavascriptMode.unrestricted,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.refresh),
-        onPressed: ()=>_webViewController?.reload()
+    return SafeArea(
+      child: Scaffold(
+        body: WebView(
+          onWebViewCreated: (controller) {
+            _webViewController = controller;
+          },
+          initialUrl: _url,
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh),
+          onPressed: ()=>_webViewController?.reload()
+        ),
       ),
     );
   }
